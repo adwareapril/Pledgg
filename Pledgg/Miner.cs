@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows;
 
 namespace Pledgg
 { 
@@ -25,8 +26,8 @@ namespace Pledgg
        
         public void Mine(object sender, DoWorkEventArgs e)
         {
-            Debug.WriteLine("New Miner. ID = " + Thread.CurrentThread.ManagedThreadId);
-            Debug.WriteLine("Starting {0} threads for new block...", threads.Length);
+            Trace.WriteLine("New Miner. ID = " + Thread.CurrentThread.ManagedThreadId);
+            Trace.WriteLine($"Starting {threads.Length} threads for new block...");
 
             Job ThisJob = (Job)e.Argument;
             
@@ -51,7 +52,8 @@ namespace Pledgg
             {
                 threads[i].Join();
             }
-           
+
+            Trace.WriteLine($"Miner ID {Thread.CurrentThread.ManagedThreadId} outputed {FinalNonce}");
             // Fill in the answer if work done
             if (FinalNonce != 0)
             {
@@ -61,7 +63,7 @@ namespace Pledgg
             else
                 e.Result = null;
 
-            Debug.WriteLine("Miner ID {0} finished", Thread.CurrentThread.ManagedThreadId);
+            Trace.WriteLine($"Miner ID {Thread.CurrentThread.ManagedThreadId} finished");
         }
 
         // Reference: https://github.com/replicon/Replicon.Cryptography.SCrypt
@@ -72,7 +74,7 @@ namespace Pledgg
             byte[] Databyte = new byte[80];
             Array.Copy(Tempdata, 0, Databyte, 0, 76);
 
-            Debug.WriteLine("New thread");
+            Trace.WriteLine("New thread");
             
             DateTime StartTime = DateTime.Now;
             
@@ -104,7 +106,7 @@ namespace Pledgg
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Trace.WriteLine(ex);
                 FinalNonce = 0;
             }
 

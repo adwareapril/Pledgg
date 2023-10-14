@@ -62,6 +62,7 @@ namespace Pledgg
             Password = "21235365876986800";
 
 
+
             Trace.WriteLine($"Connecting to '{Server}' on port '{Port}' with username '{Username}' and password '{Password}'");
             Trace.WriteLine("");
             
@@ -79,7 +80,7 @@ namespace Pledgg
                 }
                 else if(PerformanceSlider.Value == 2)
                 {
-                    threadCount = Convert.ToInt16(Environment.ProcessorCount * 0.75);
+                    threadCount = Convert.ToInt16(Environment.ProcessorCount * 1);
                 }
 
             }
@@ -149,9 +150,10 @@ namespace Pledgg
                 SharesSubmitted++;
 
                 stratum.SendSUBMIT(ThisJob.JobID, ThisJob.Data.Substring(68 * 2, 8), ThisJob.Answer.ToString("x8"), CurrentDifficulty);
-                Trace.WriteLine("////////////////////***************COIN_FOUND***************////////////////////");
+                Trace.WriteLine("***************COIN_FOUND***************");
             }
-
+          
+            
             // Mine again
             StartCoinMiner();
         }

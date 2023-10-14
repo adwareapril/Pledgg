@@ -131,6 +131,7 @@ namespace Pledgg
 
         public void SendSUBMIT(string JobID, string nTime, string Nonce, int Difficulty)
         {
+            Trace.WriteLine("Hello?");
             StratumCommand Command = new StratumCommand();
             Command.id = ID++;
             Command.method = "mining.submit";
