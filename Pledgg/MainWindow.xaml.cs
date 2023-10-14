@@ -18,6 +18,7 @@ using System.Reflection;
 using System.Threading;
 using System.Timers;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace Pledgg
 {
@@ -49,7 +50,7 @@ namespace Pledgg
         public MainWindow()
         {
             InitializeComponent();
-            Start();
+
         }
 
         void Start()
@@ -63,8 +64,32 @@ namespace Pledgg
 
             Trace.WriteLine($"Connecting to '{Server}' on port '{Port}' with username '{Username}' and password '{Password}'");
             Trace.WriteLine("");
+            
+            int threadCount = Environment.ProcessorCount / 2;
 
-            CoinMiner = new Miner(null);
+            try
+            {
+                if (PerformanceSlider.Value == 0)
+                {
+                    threadCount = Convert.ToInt16(Environment.ProcessorCount *0.25);
+                }
+                else if(PerformanceSlider.Value == 1)
+                {
+                    threadCount = Convert.ToInt16(Environment.ProcessorCount * 0.5);
+                }
+                else if(PerformanceSlider.Value == 2)
+                {
+                    threadCount = Convert.ToInt16(Environment.ProcessorCount * 0.75);
+                }
+
+            }
+            catch
+            {
+
+            }
+
+
+            CoinMiner = new Miner(threadCount);
             stratum = new Stratum();
 
             // Workaround for pools that keep disconnecting if no work is submitted in a certain time period. Send regular mining.authorize commands to keep the connection open
@@ -207,6 +232,11 @@ namespace Pledgg
             // Add the new job to the queue
             IncomingJobs.Enqueue(ThisJob);
         }
+
+        private void Checked(object sender, RoutedEventArgs e)
+        {
+            Start();
+        }
     }
 
     public class Job
@@ -230,4 +260,6 @@ namespace Pledgg
             public uint Answer;
         
     }
+ 
+    
 }
