@@ -117,7 +117,6 @@ namespace Pledgg
 
         static void CoinMinerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Trace.WriteLine("CoinFound");
             // If the miner returned a result, submit it
             if (e.Result != null)
             {
@@ -125,6 +124,7 @@ namespace Pledgg
                 SharesSubmitted++;
 
                 stratum.SendSUBMIT(ThisJob.JobID, ThisJob.Data.Substring(68 * 2, 8), ThisJob.Answer.ToString("x8"), CurrentDifficulty);
+                Trace.WriteLine("CoinFound");
             }
 
             // Mine again

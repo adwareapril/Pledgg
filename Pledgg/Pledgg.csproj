@@ -2,16 +2,38 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.22621.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
+    <ApplicationIcon>pledge icon-modified.ico</ApplicationIcon>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\pledge icon.png" />
+    <None Remove="images\Pledgg full logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="pledge icon-modified.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LottieSharp" Version="2.3.0" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.10" />
     <PackageReference Include="MaterialDesignColors" Version="2.1.4" />
     <PackageReference Include="MaterialDesignExtensions" Version="3.3.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+    <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.3.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="Replicon.Cryptography.SCrypt" Version="1.1.6.13" />
+    <PackageReference Include="System.Text.Json" Version="7.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\pledge icon.png" />
+    <Resource Include="images\Pledgg full logo.png" />
   </ItemGroup>
 
 </Project>
