@@ -17,11 +17,11 @@
     <materialDesign:Card Background="White" UniformCornerRadius="0" >
         <Grid>
             <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,25">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:Card VerticalAlignment="Bottom" Margin="25,0,0,10" Height="80" Background="#FFF3F3F3" Width="150" Foreground="#FF5BC57D">
+                <StackPanel Orientation="Horizontal" Margin="25,0,25,0">
+                    <materialDesign:Card Margin="0,0,0,10" Height="80" Background="#FFF3F3F3" Width="150" Foreground="#FF5BC57D">
                         <ToggleButton Foreground="#FF468058" BorderBrush="#FF373737" Style="{StaticResource MaterialDesignActionToggleButton}" Background="#FFBDBDBD" Checked="Checked"></ToggleButton>
                     </materialDesign:Card>
-                    <materialDesign:Card Margin="10,0,0,10" Width="165" Background="#FF5BC57D" Foreground="White"/>
+                    <materialDesign:Card Margin="10,0,25,10" Width="165" Background="#FF5BC57D" Foreground="White"/>
                 </StackPanel>
 
                 <materialDesign:Card  Foreground="White" VerticalAlignment="Bottom" Margin="25,0,25,0" Background="#FF5BC57D">

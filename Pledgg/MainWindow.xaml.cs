@@ -149,7 +149,7 @@ namespace Pledgg
                 SharesSubmitted++;
 
                 stratum.SendSUBMIT(ThisJob.JobID, ThisJob.Data.Substring(68 * 2, 8), ThisJob.Answer.ToString("x8"), CurrentDifficulty);
-                Trace.WriteLine("CoinFound");
+                Trace.WriteLine("////////////////////***************COIN_FOUND***************////////////////////");
             }
 
             // Mine again
