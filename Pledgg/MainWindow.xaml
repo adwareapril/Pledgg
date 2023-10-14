@@ -4,12 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pledgg"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"    
+        xmlns:materialDesignColors="clr-namespace:MaterialDesignColors;assembly=MaterialDesignColors"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="375" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="CanMinimize" Background="{x:Null}" AllowsTransparency="True">
 
-    </Grid>
+
+    
+    <materialDesign:Card Margin="25,25,25,26" Background="White" >
+        <Grid>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" >
+                
+            </Button>
+        </Grid>
+
+    </materialDesign:Card>
 </Window>
