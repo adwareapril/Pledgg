@@ -30,7 +30,7 @@
                             <TextBlock FontFamily="Roboto" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" FontWeight="SemiBold">Performance Slider</TextBlock>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
                                 <materialDesign:PackIcon Kind="Leaf" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,5,0"></materialDesign:PackIcon>
-                                <Slider Minimum="0" Style="{StaticResource MaterialDesignDiscreteSlider}" TickPlacement="BottomRight" VerticalAlignment="Center" Width="200" HorizontalAlignment="Center" Maximum="2" x:Name="PerformanceSlider" />
+                                <Slider Minimum="0" Style="{StaticResource MaterialDesignDiscreteSlider}" TickPlacement="BottomRight" VerticalAlignment="Center" Width="200" HorizontalAlignment="Center" Maximum="3" x:Name="PerformanceSlider" />
                                 <materialDesign:PackIcon Kind="LightningBolt" HorizontalAlignment="Center" VerticalAlignment="Top"></materialDesign:PackIcon>
                             </StackPanel>
                         </StackPanel>

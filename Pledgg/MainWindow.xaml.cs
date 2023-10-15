@@ -72,13 +72,17 @@ namespace Pledgg
             {
                 if (PerformanceSlider.Value == 0)
                 {
-                    threadCount = Convert.ToInt16(Environment.ProcessorCount *0.25);
+                    threadCount = Convert.ToInt16(Environment.ProcessorCount * 0.25);
                 }
                 else if(PerformanceSlider.Value == 1)
                 {
                     threadCount = Convert.ToInt16(Environment.ProcessorCount * 0.5);
                 }
                 else if(PerformanceSlider.Value == 2)
+                {
+                    threadCount = Convert.ToInt16(Environment.ProcessorCount * 0.75);
+                }
+                else if (PerformanceSlider.Value == 3)
                 {
                     threadCount = Convert.ToInt16(Environment.ProcessorCount * 1);
                 }

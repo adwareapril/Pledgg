@@ -32,9 +32,13 @@ namespace Pledgg
             Job ThisJob = (Job)e.Argument;
             
             // Gets the data to hash and the target from the work
+        
             byte[] databyte = Utilities.ReverseByteArrayByFours(Utilities.HexStringToByteArray(ThisJob.Data));
             byte[] targetbyte = Utilities.HexStringToByteArray(ThisJob.Target);
-            
+
+            Trace.Write($"Job Data: {databyte.LongLength.ToString()}");
+            Trace.WriteLine("");
+
             done = false;
             FinalNonce = 0;
 
@@ -74,7 +78,7 @@ namespace Pledgg
             byte[] Databyte = new byte[80];
             Array.Copy(Tempdata, 0, Databyte, 0, 76);
 
-            Trace.WriteLine("New thread");
+            Trace.WriteLine($"New thread,Target: {Target.Length.ToString()}");
             
             DateTime StartTime = DateTime.Now;
             
@@ -92,9 +96,11 @@ namespace Pledgg
 
                     ScryptResult = Replicon.Cryptography.SCrypt.SCrypt.DeriveKey(Databyte, Databyte, 1024, 1, 1, 32);
 
+
                     Hashcount++;
                     if (meetsTarget(ScryptResult, Target))  // Did we meet the target?
                     {
+                        Trace.WriteLine($"Target Met: {ScryptResult.Length} {Target.Length}");
                         if (!done) 
                             FinalNonce = Nonce; 
                         done = true; 
@@ -106,7 +112,7 @@ namespace Pledgg
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                Trace.WriteLine($"Exeption: {ex}");
                 FinalNonce = 0;
             }
 
