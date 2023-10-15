@@ -56,7 +56,7 @@ namespace Pledgg
         void Start()
         {
 
-            Server = "ltc.f2pool.com";
+            Server = "ltc-euro.f2pool.com";
             Port = 3335;
             Username = "adware.001";
             Password = "21235365876986800";

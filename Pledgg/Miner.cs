@@ -78,10 +78,10 @@ namespace Pledgg
             byte[] Databyte = new byte[80];
             Array.Copy(Tempdata, 0, Databyte, 0, 76);
 
-            Trace.WriteLine($"New thread,Target: {Target.Length.ToString()}");
-            
+            Trace.WriteLine($"New thread, Target: {BitConverter.ToString(Target)}");
+
             DateTime StartTime = DateTime.Now;
-            
+
             try
             {
                 byte[] ScryptResult = new byte[32];
@@ -96,14 +96,15 @@ namespace Pledgg
 
                     ScryptResult = Replicon.Cryptography.SCrypt.SCrypt.DeriveKey(Databyte, Databyte, 1024, 1, 1, 32);
 
+                    //Trace.WriteLine("Calculated Hash: " + BitConverter.ToString(ScryptResult).Replace("-", ""));
 
                     Hashcount++;
                     if (meetsTarget(ScryptResult, Target))  // Did we meet the target?
                     {
-                        Trace.WriteLine($"Target Met: {ScryptResult.Length} {Target.Length}");
-                        if (!done) 
-                            FinalNonce = Nonce; 
-                        done = true; 
+                        Trace.WriteLine($"Target Met: {BitConverter.ToString(ScryptResult)}");
+                        if (!done)
+                            FinalNonce = Nonce;
+                        done = true;
                         break;
                     }
                     else
@@ -112,12 +113,13 @@ namespace Pledgg
             }
             catch (Exception ex)
             {
-                Trace.WriteLine($"Exeption: {ex}");
+                Trace.WriteLine($"Exception: {ex}");
                 FinalNonce = 0;
             }
 
             double Elapsedtime = (DateTime.Now - StartTime).TotalMilliseconds;
-            Trace.WriteLine($"Thread finished - {Hashcount} hashes in {Elapsedtime} ms. Speed: {Hashcount/Elapsedtime} kHash/s");
+            Trace.WriteLine($"Thread finished - {Hashcount} hashes in {Elapsedtime} ms. Speed: {Hashcount / Elapsedtime} kHash/s");
+            Trace.WriteLine("");
         }
 
         public bool meetsTarget(byte[] hash, byte[] target)
@@ -130,6 +132,9 @@ namespace Pledgg
                     return true;
             }
             return false;
+
+
+            //return true; // If all bytes are equal, it meets the target
         }
     }
 
